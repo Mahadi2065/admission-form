@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission - CSE, Northern University Bangladesh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7fafc; /* bg-gray-100 */
+        }
+        header {
+            background-color: #3b82f6; /* bg-blue-600 */
+            color: white;
+            padding: 1rem 0;
+        }
+        header .container {
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            max-width: 1280px; /* Equivalent to max-w-7xl */
+        }
+        header .flex {
+            display: flex;
+            justify-content: space-between; /* justify-between */
+            align-items: center; /* items-center */
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+        header a.text-xl {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+        }
+        header nav.hidden {
+            display: none; /* hidden */
+        }
+        @media (min-width: 768px) {
+            header nav.hidden {
+                display: block; /* md:block */
+            }
+        }
+        header nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        header nav ul li {
+            margin-left: 1.5rem; /* ml-6 */
+        }
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease; /* Smooth transition */
+        }
+        header nav ul li a:hover {
+            color: #e0f2fe; /* hover:text-blue-200 */
+        }
+        #hamburger-btn {
+            color: white;
+            padding: 0.5rem;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            display: flex; /* Added for proper icon centering */
+            align-items: center;
+            justify-content: center;
+            outline: none;
+        }
+        @media (min-width: 768px) {
+            #hamburger-btn {
+                display: none; /* md:hidden */
+            }
+        }
+        #mobile-menu {
+            display: none; /* hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* bg-gray-900 bg-opacity-90 */
+            z-index: 50;
+        }
+        #mobile-menu.active {
+            display: block;
+        }
+
+        #mobile-menu .bg-gray-800 {
+            background-color: #1e293b;
+            width: 80%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            padding: 1.5rem;
+        }
+
+        #mobile-menu .flex {
+            display: flex;
+            justify-content: flex-end; /* justify-end */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+
+        #mobile-menu nav {
+            display: block; /* block */
+        }
+
+        #mobile-menu nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #mobile-menu nav ul li {
+            margin-bottom: 1rem; /* mb-4 */
+        }
+
+        #mobile-menu nav ul li a {
+            color: white;
+            font-size: 1.25rem; /* text-lg */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #mobile-menu nav ul li a:hover {
+            color: #e0f2fe;
+        }
+
+        #close-menu-btn {
+            color: white;
+            padding: 0.5rem;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            outline: none;
+        }
+
+        main {
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: 2rem; /* py-8 */
+            padding-bottom: 2rem;
+            max-width: 1280px;
+        }
+
+        main section {
+            background-color: white; /* bg-white */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* shadow-md */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 2rem; /* mb-8 */
+        }
+
+        main h2 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            color: #1e3a8a; /* text-blue-700 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+
+        main p {
+            color: #4b5563; /* text-gray-700 */
+            margin-bottom: 1rem;
+        }
+
+        main .grid {
+            display: grid;
+            grid-template-columns: 1fr; /* grid-cols-1 */
+            gap: 1.5rem; /* gap-6 */
+        }
+        @media (min-width: 768px) {
+            main .grid {
+                grid-template-columns: 1fr 1fr; /* md:grid-cols-2 */
+            }
+        }
+
+        main .grid div {
+
+        }
+
+        main .grid h3 {
+            font-size: 1.125rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+            color: #1f2937; /* text-gray-900 */
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+
+        main .grid ul {
+            list-style: disc;
+            margin-left: 1rem;
+            padding-left: 1rem;
+            space-y: 0.5rem; /* space-y-2 */
+            color: #4b5563;
+        }
+        main ol {
+            list-style: decimal;
+            margin-left: 1rem;
+            padding-left: 1rem;
+            space-y: 1rem;
+            color: #4b5563;
+        }
+
+        main ol li{
+             margin-bottom: 0.25rem;
+        }
+
+        main a {
+            color: #3b82f6; /* text-blue-500 */
+            text-decoration: underline;
+        }
+
+        main a:hover{
+            color: #2563eb;
+        }
+
+        footer {
+            background-color: #f3f4f6; /* bg-gray-200 */
+            color: #4b5563; /* text-gray-700 */
+            padding: 1rem 0; /* py-4 */
+            margin-top: 2rem; /* mt-8 */
+            text-align: center;
+        }
+        .h-10{
+            height: 2.5rem;
+        }
+        .inline-block{
+            display: inline-block;
+        }
+        .mr-2{
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-xl font-semibold">
+                    <img src="https://www.northsouth.edu/assets/images/logo.png" alt="Northern University Logo" class="h-10 inline-block mr-2">
+                    <span class="text-xl font-semibold">Northern University Bangladesh</span>
+                </a>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-6">
+                        <li><a href="#" class="hover:text-blue-200 transition duration-300">Home</a></li>
+                        <li><a href="#" class="hover:text-blue-200 transition duration-300">About Us</a></li>
+                        <li><a href="#" class="hover:text-blue-200 transition duration-300">CSE Department</a></li>
+                        <li><a href="#" class="hover:text-blue-200 transition duration-300">Admissions</a></li>
+                        <li><a href="#" class="hover:text-blue-200 transition duration-300">Contact</a></li>
+                    </ul>
+                </nav>
+                <button id="hamburger-btn" class="md:hidden text-white focus:outline-none" aria-label="Toggle Navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-50">
+        <div class="bg-gray-800 w-80 h-full absolute right-0 p-6">
+            <div class="flex justify-end mb-4">
+                <button id="close-menu-btn" class="text-white focus:outline-none" aria-label="Close Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="block">
+                <ul class="space-y-4">
+                    <li><a href="#" class="block text-lg text-white hover:text-blue-200 transition duration-300">Home</a></li>
+                    <li><a href="#" class="block text-lg text-white hover:text-blue-200 transition duration-300">About Us</a></li>
+                    <li><a href="#" class="block text-lg text-white hover:text-blue-200 transition duration-300">CSE Department</a></li>
+                    <li><a href="#" class="block text-lg text-white hover:text-blue-200 transition duration-300">Admissions</a></li>
+                    <li><a href="#" class="block text-lg text-white hover:text-blue-200 transition duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Welcome to the CSE Department, Northern University Bangladesh</h2>
+            <p class="text-gray-700 mb-4">
+                The Department of Computer Science and Engineering (CSE) at Northern University Bangladesh is dedicated to providing a high-quality education in the field of computer science. We prepare our students for successful careers in software development, system administration, network engineering, and other related areas.
+            </p>
+            <p class="text-gray-700">
+                We offer a range of undergraduate and graduate programs designed to meet the evolving needs of the tech industry. Our curriculum is regularly updated to incorporate the latest technologies and best practices.
+            </p>
+        </section>
+
+        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Admission Requirements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Undergraduate Programs</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>HSC or equivalent with a minimum GPA of 2.5</li>
+                        <li>Mathematics with a minimum grade of C</li>
+                        <li>Physics with a minimum grade of C</li>
+                        <li>English with a minimum grade of C</li>
+                        <li>Satisfactory score in the NUB admission test</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Graduate Programs</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Bachelor's degree in CSE or a related field</li>
+                        <li>Minimum CGPA of 2.75 on a 4.0 scale</li>
+                        <li>Satisfactory score in the NUB admission test or GRE</li>
+                        <li>For some programs, relevant work experience may be required</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">How to Apply</h2>
+            <ol class="list-decimal list-inside space-y-4 text-gray-700">
+                <li>Visit the NUB website: <a href="https://www.nub.ac.bd/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">www.nub.ac.bd</a></li>
+                <li>Click on the "Admissions" tab.</li>
+                <li>Select the program you want to apply for.</li>
+                <li>Fill out the online application form.</li>
+                <li>Pay the application fee.</li>
+                <li>Submit the required documents.</li>
+                <li>Prepare for the admission test.</li>
+            </ol>
+        </section>
+
+        <section class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Important Dates</h2>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>Application Deadline: August 31, 2023</li>
+                <li>Admission Test: September 15, 2023</li>
+                <li>Result Announcement: September 25, 2023</li>
+                <li>Orientation: October 10, 2023</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-gray-200 text-gray-700 py-4 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            &copy; 2023 Northern University Bangladesh. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const closeMenuBtn = document.getElementById("close-menu-btn");
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle("hidden");
+        }
+
+        hamburgerBtn.addEventListener("click", toggleMobileMenu);
+        closeMenuBtn.addEventListener("click", toggleMobileMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener("click", toggleMobileMenu);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
+                toggleMobileMenu();
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+    </script>
+</body>
+</html>
